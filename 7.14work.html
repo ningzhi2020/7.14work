@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="UTF-8">
+<head>
+    <meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			padding-top: 100px;
+			margin: 0 30%;
+			
+        }
+        
+		.tab {
+			width: 400px;
+			display: flex;
+			justify-content: space-around;
+            
+            background:#ccc;
+		}
+		.tab> div {
+			width: 50%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+		.current-tab {
+			background: #00B262;
+        }
+        .left{
+            width: 190px;
+            height: 87px;
+            background: #ccc;
+            position: absolute;
+            top:200px;
+            float: left;
+        }
+		.content {
+            width: 400px;
+            float:right;
+		}
+		.content img{
+			width: 50%;
+			/* display:none; */
+		}
+		.dis {
+			display: none;
+		}
+		.current-img {
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+    
+	<div class='tab'>
+		<div class="current-tab">今日疯抢</div>
+		<div>量限贩</div>
+    </div>
+    <!--<div class="left">
+        <img class="cla-icon" src="https://img.alicdn.com/tfs/TB12RqQewMPMeJjy1XdXXasrXXa-23-23.png" style="margin: -10px 0 0;">
+        <span style="color: #00B262;">零食欢乐购</span><br>
+        <span>爆款直降</span>
+    </div>-->
+	<div class="content">
+		<img src="https://img.alicdn.com/tfs/TB1jNScP6TpK1RjSZKPXXa3UpXa-400-400.jpg" class="dis current-img"></img>
+		<img src="https://img.alicdn.com/tfs/TB1_O_LgSrqK1RjSZK9XXXyypXa-400-400.jpg" class="dis"></img>
+    </div>
+</div>
+</body>
+<script>
+	let disList = document.querySelectorAll('.tab div')
+	let imdList = document.querySelectorAll('.content img')
+	for(let i = 0;i<disList.length;i++) {
+		disList[i].onclick = function() {
+			handle(i)
+		}
+	}
+	setInterval(function() {
+		handle(test())
+	},2000)
+	let test = (function() {
+		let num = 0
+		return () => {
+			if(num ==2) {
+				num = 0
+			}
+			return num++
+		}
+	}())
+
+	function handle(i) {
+		for(let j = 0;j<imdList.length;j++) {
+				disList[j].style.background = "#ccc"
+                disList[j].style.color = "#000"
+				imdList[j].style.display = "none"
+			}
+		disList[i].style.background = "#00B262"
+        disList[i].style.color = "#fff"
+		imdList[i].style.display = "block"
+
+	}
+	
+</script>
+</html>
